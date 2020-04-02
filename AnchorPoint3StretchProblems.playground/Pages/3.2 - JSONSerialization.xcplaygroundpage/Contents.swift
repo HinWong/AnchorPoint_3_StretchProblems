@@ -39,4 +39,32 @@ let jsonString = """
 """
 
 let data = jsonString.data(using: .utf8, allowLossyConversion: false)!
+
+class Person:Codable {
+    let name: String
+    let age: Int
+    let hasLice: Bool
+    let siblingNames: [String]
+    
+    init?(dict: [String: Any]) {
+        guard let name = dict["name"] as? String, let age = dict["age"] as? Int, let hasLice = dict["hasLice"] as? Bool, let siblingNames = dict["siblingNames"] as? [String] else {return nil}
+        
+        self.name = name
+        self.age = age
+        self.hasLice = hasLice
+        self.siblingNames = siblingNames
+    }
+}
+
+
+do {
+    guard let dictionary: [String: Any] = try JSONSerialization.jsonObject(with: data, options: .allowFragments) as? [String: Any] else {fatalError()}
+    if let person = Person(dict: dictionary) {
+        print(person.name)
+    }
+} catch {
+    print("error")
+}
+    
+    
 //: [Next](@next)

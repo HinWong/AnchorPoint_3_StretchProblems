@@ -17,5 +17,17 @@ var numbersArray = [11,24,45,44,59,43,88,93,58,11,13,14,15,190]
 var stringsArray = ["I", "Love", "DevMountain"]
 var blackDiamondDictionary = ["Mama" : "too cold", "Papa" : "too hot", "Baby" : "just right"]
 
+// 1.
+let results = numbersArray.filter {$0.isMultiple(of: 3)}
+print(results)
+
+// 2.
+print(numbersArray.max())
+print(results.max())
+
+// 3.
+let string = stringsArray.joined(separator: " ")
+print(string)
+
 
 //: [Next](@next)
